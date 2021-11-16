@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Admin Kumbahan</title>
+    <title>Admin PEMIRA</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" inte grity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="<?= base_url('/assets/plugins/select2/css/select2.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') ?>">
-
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <!-- Datatables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
@@ -29,6 +29,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url('/assets/stisla/css/style.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/assets/stisla/css/components.css') ?>">
+    
 
 </head>
 
@@ -40,7 +41,6 @@
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
                     </ul>
                 </form>
                 <ul class="navbar-nav navbar-right">
@@ -49,10 +49,6 @@
                             <div class="d-sm-none d-lg-inline-block"><?= 'nama'; ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="<?= site_url('profile') ?>" class="dropdown-item has-icon">
-                                <i class="far fa-user"></i> Profile
-                            </a>
-                            <div class="dropdown-divider"></div>
                             <a href="<?= site_url('auth/logout') ?>" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
@@ -70,21 +66,22 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
-                        <li class=""><a class="nav-link" href="<?= site_url('owner/dashboard') ?>"><i class="nav-icon fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                        <li class=""><a class="nav-link" href="<?= site_url('dashboard') ?>"><i class="nav-icon fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                         </li>
-
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="nav-icon fas fa-tags"></i><span>Promo</span></a>
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="nav-icon fas fa-tags"></i><span>Tampil Data</span></a>
                             <ul class="dropdown-menu">
-                                <li class=""><a class="nav-link" href="<?= site_url('owner/promo/cashback') ?>"><i class="fas fa-percent"></i>Cashback</a></li>
-                                <li class=""><a class="nav-link" href="<?= site_url('owner/promo/point') ?>"><i class="fab fa-bitcoin"></i>Point</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/dpm/tampil') ?>"><i class="fas fa-percent"></i>DPM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/bem/tampil') ?>"><i class="fab fa-bitcoin"></i>BEM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/pemilih/tampil') ?>"><i class="fab fa-bitcoin"></i>Pemilih</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="nav-icon fas fa-file-invoice-dollar"></i><span>Pengeluaran</span></a>
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="nav-icon fas fa-tags"></i><span>Input Data</span></a>
                             <ul class="dropdown-menu">
-                                <li class=""><a class="nav-link" href="<?= site_url('owner/pengeluaran/jenis-pengeluaran') ?>">Jenis Pengeluaran</a></li>
-                                <li class=""><a class="nav-link" href="<?= site_url('owner/pengeluaran/tambah-pengeluaran') ?>">Pengeluaran</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/dpm/input') ?>"><i class="fas fa-percent"></i>DPM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/bem/input') ?>"><i class="fab fa-bitcoin"></i>BEM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/pemilih/input') ?>"><i class="fab fa-bitcoin"></i>Pemilih</a></li>
                             </ul>
                         </li>
 
@@ -124,6 +121,7 @@
 
 
             <script src=" <?= base_url('/assets/plugins/webcam/webcam.min.js') ?>"></script>
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
             <!-- JS Libraies -->
 
             <!-- Template JS File -->
@@ -198,7 +196,7 @@
                     {
                         extend: 'print',
                         className: 'btn btn-primary',
-                        title: '<?= $title ?>',
+                        title: 'Print Data',
                         exportOptions: {
                             modifier: {
                                 page: '2'

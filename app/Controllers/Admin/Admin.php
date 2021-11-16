@@ -62,6 +62,44 @@ class Admin extends BaseController
 
 	}
 
+	public function importDPM(){
+
+		$file = $this->request->getfile('fileexcel');
+		$ext = $file->getClientExtension();
+
+		if($ext == 'xls'){
+			$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+		}else{
+			$reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+		}
+
+		$spreadsheet = $reader->load($file);
+		$sheet = $spreadsheet->getActiveSheet()->toArray();
+
+		foreach ($sheet as $x => $excel){
+			if($x == 0){
+				continue;
+			}
+			$password = password_hash($excel[4], PASSWORD_BCRYPT);
+			$data = [
+				'nim' => $excel[1],
+				'nama' => $excel[2],
+				'fakultas' => $excel[3],
+				'password' => $password,
+				'dpmu' =>0,
+				'dpmf' =>0,
+				'bemu' =>0,
+				'bemf' =>0,
+				'status' =>0
+			];
+
+			$this->modelpemilih->save($data);
+		}
+
+		return 'berhasil';
+
+	}
+
 	public function post()
 	{
 
