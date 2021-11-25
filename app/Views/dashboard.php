@@ -125,32 +125,32 @@
                                                         switch ($fk['label']) {
                                                             case 'Teknik':
                                                                 foreach ($dpmf['DPMFT'] as $dpmteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $fk['kode'] . '/' . $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Ekonomi dan Bisnis':
                                                                 foreach ($dpmf['DPMFEB'] as $dpmteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Keguruan dan Ilmu Pendidikan':
                                                                 foreach ($dpmf['DPMFKIP'] as $dpmteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Pertanian':
                                                                 foreach ($dpmf['DPMFPT'] as $dpmteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Psikologi':
                                                                 foreach ($dpmf['DPMFPSI'] as $dpmteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Hukum':
                                                                 foreach ($dpmf['DPMFH'] as $dpmteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/dpm/') . $dpmteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $dpmteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $dpmteknik['id'], 'ormawa' => $dpmteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                         }
@@ -164,32 +164,32 @@
                                                         switch ($fk['label']) {
                                                             case 'Teknik':
                                                                 foreach ($bemf['BEMFT'] as $bemteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Ekonomi dan Bisnis':
                                                                 foreach ($bemf['BEMFEB'] as $bemteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Keguruan dan Ilmu Pendidikan':
                                                                 foreach ($bemf['BEMFKIP'] as $bemteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Pertanian':
                                                                 foreach ($bemf['BEMFPT'] as $bemteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Psikologi':
                                                                 foreach ($bemf['BEMFPSI'] as $bemteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                             case 'Hukum':
                                                                 foreach ($bemf['BEMFH'] as $bemteknik) {
-                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
+                                                                    echo '<p><a href="' . site_url('vote/bem/') . $bemteknik['ormawa'] . '/' . $fk['kode'] . '/' .  $bemteknik['id'] . '">' . count($suara->where(['fakultas' => $fk['kode'], 'id_paslon' => $bemteknik['id'], 'ormawa' => $bemteknik['ormawa']])->findAll()) . '</a></p>';
                                                                 }
                                                                 break;
                                                         }

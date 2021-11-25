@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="section-header">
-        <h1> Data Pemilih <?= $paslon['nama_ketua'].' & '.$paslon['nama_wakil'] ?></h1>
+        <h1> Data Pemilih <?= $paslon['nama_ketua'] . ' & ' . $paslon['nama_wakil'] ?></h1>
     </div>
 </section>
 
@@ -22,19 +22,21 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>NIM Pemilih</th>
                                     <th>Nama Pemilih</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
                                 $no = 1;
                                 foreach ($row as $pemilih) { ?>
                                     <tr>
                                         <td><?= $no ?></td>
+                                        <td><?= $pemilih['nim'] ?></td>
                                         <td><?= $pemilih['nama'] ?></td>
                                     </tr>
                                 <?php $no++;
-                            } ?>
+                                } ?>
                             </tbody>
                         </table>
                     </div>
