@@ -9,7 +9,7 @@ class Modelkandidatdpm extends Model
 
     protected $table = 'kandidat_dpm';
     protected $allowedFields = [
-        'nim', 'nama', 'prodi', 'fakultas', 'visi', 'misi', 'nourut', 'ormawa'
+        'nim', 'nama', 'prodi', 'fakultas', 'visi', 'misi', 'nourut', 'ormawa', 'foto_dpm'
     ];
 
 }

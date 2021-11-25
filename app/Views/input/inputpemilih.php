@@ -3,26 +3,27 @@
 <?= $this->section("content") ?>
 <section class="section">
     <div class="section-header">
-        <h1>Input Data Calon Ketua DPM</h1>
+        <h1>Input Data Pemilih Tetap</h1>
     </div>
 </section>
 
 <section class="section-body">
 
-<div class="card card-success">
-    <div class="card-body">
-        <form action="<?= site_url('pemilih/import') ?>" method="POST" enctype="multipart/form-data" >
-        <?= csrf_field() ?>
-        <div class="row">
-            <div class="col-md-4">
-                <input type="file" class="form-control" accept=".xls, .xlsx" name="fileexcel" />
-            </div>
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-success"> Import Data </button>
-            </div>
+    <div class="card card-success">
+        <div class="card-body">
+            <form action="<?= site_url('admin/pemilih/import') ?>" method="POST" enctype="multipart/form-data">
+                <?= csrf_field() ?>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="file" class="form-control" accept=".xls, .xlsx" name="fileexcel" />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-success"> Import Data </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</div>
 
 
     <div class="card card-primary">
@@ -69,14 +70,14 @@
 
                 <div class="row">
                     <div class="form-group col-6">
-                    <label for="password">Password</label>
+                        <label for="password">Password</label>
                         <input name="password" id="password" class="form-control" type="text" required>
                     </div>
                 </div>
-                                
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
-                        Register
+                        Simpan Data
                     </button>
                 </div>
             </form>

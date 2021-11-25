@@ -9,6 +9,7 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" inte grity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url('/assets/fa/css/all.css') ?>">
+    <link rel="icon" type="image/x-icon" href="<?= base_url("upload/kpum.png") ?>">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url('/assets/stisla/css/style.css') ?>">
@@ -56,9 +57,9 @@
             <!-- Main Content -->
             <div class="main-content">
 
-            <div class="section-header">
-            <h1 class='text-center'> <?= $title ?></h1>
-          </div>
+                <div class="section-header">
+                    <h1 class='text-center'> <?= $title ?></h1>
+                </div>
 
                 <?= $this->renderSection("isi") ?>
             </div>
@@ -93,7 +94,8 @@
 
                     var paslon = $(this).data('paslon')
                     var pemilih = $(this).data('pemilih')
-                
+                    var fakultas = $(this).data('fakultas')
+
                     $.ajax({
                         type: "POST",
                         url: "<?= site_url('vote/vote') ?>",
@@ -102,11 +104,12 @@
                             paslon: paslon,
                             pemilih: pemilih,
                             ormawa: '<?= $ormawa ?>',
-                            sesi: '<?= $sesi ?>'
+                            sesi: '<?= $sesi ?>',
+                            fakultas: fakultas
                         },
                         dataType: "JSON",
                         success: function(response) {
-                           location.reload()
+                            location.reload()
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
                             alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);

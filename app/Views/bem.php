@@ -4,67 +4,51 @@
 <section class="section">
 
     <div class="row">
-        <?php foreach($kandidat as $kdd) {?>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chocolat-parent">
-                        <div data-crop-image="250" style="overflow: hidden; position: relative; height: 285px;">
-                            <img alt="image" src="<?= base_url("assets/stisla/img/example-image.jpg") ?>" class="img-fluid">
+        <?php foreach ($kandidat as $kdd) { ?>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chocolat-parent">
+                            <div data-crop-image="250" style="overflow: hidden; position: relative; height: 300px;">
+                                <img alt="image" src="<?= base_url('upload') . '/' . $kdd['foto_paslon'] ?>" class="img-fluid">
+                            </div>
                         </div>
                     </div>
                     <h4 class="text-center">
-                        <a href="" id="paslon"
-                        data-toggle="modal" 
-                        data-target="#modalpaslon"
-                        data-nama =  "<?= $kdd['nama_ketua'] ?>"
-                        data-nim =  "<?= $kdd['nim_ketua'] ?>"
-                        data-prodi =  "<?= $kdd['prodi_ketua'] ?>"
-                        data-fakultas =  "<?= $kdd['fakultas_ketua'] ?>"
-                        >
+                        <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama_ketua'] ?>" data-nim="<?= $kdd['nim_ketua'] ?>" data-prodi="<?= $kdd['prodi_ketua'] ?>" data-fakultas="<?= $kdd['fakultas_ketua'] ?>" data-foto="<?= $kdd['foto_ketua'] ?>">
                             <?= $kdd['nama_ketua'] ?>
-                        </a> 
+                        </a>
                         dan
-                        <a href="" id="paslon"
-                        data-toggle="modal" 
-                        data-target="#modalpaslon"
-                        data-nama =  "<?= $kdd['nama_wakil'] ?>"
-                        data-nim =  "<?= $kdd['nim_wakil'] ?>"
-                        data-prodi =  "<?= $kdd['prodi_wakil'] ?>"
-                        data-fakultas =  "<?= $kdd['fakultas_wakil'] ?>"
-                        >
+                        <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama_wakil'] ?>" data-nim="<?= $kdd['nim_wakil'] ?>" data-prodi="<?= $kdd['prodi_wakil'] ?>" data-fakultas="<?= $kdd['fakultas_wakil'] ?>" data-foto="<?= $kdd['foto_wakil'] ?>">
                             <?= $kdd['nama_wakil'] ?>
-                        </a> 
+                        </a>
                     </h4>
-
                     <div class="mt-4 text-center">
                         <p>
-                            <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseVisi" aria-expanded="false" aria-controls="collapseVisi">
+                            <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseVisi-<?= $kdd['id'] ?>" aria-expanded="false" aria-controls="collapseVisi">
                                 Visi
                             </button>
-                            <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseMisi" aria-expanded="false" aria-controls="collapseMisi">
+                            <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseMisi-<?= $kdd['id'] ?>" aria-expanded="false" aria-controls="collapseMisi">
                                 Misi
                             </button>
                         </p>
-                        
+
                     </div>
-                    <div class="collapse" id="collapseVisi">
+                    <div class="collapse" id="collapseVisi-<?= $kdd['id'] ?>">
                         <p>
                             <strong>Visi</strong>
                             <?= $kdd['visi'] ?>
                         </p>
                     </div>
-                    <div class="collapse" id="collapseMisi">
+                    <div class="collapse" id="collapseMisi-<?= $kdd['id'] ?>">
                         <p>
                             <strong>Misi</strong>
-                        <?= $kdd['misi'] ?>
+                            <?= $kdd['misi'] ?>
                         </p>
                     </div>
-                    <button class="btn btn-block btn-success tombol-vote" data-paslon=<?= $kdd['id'] ?> data-pemilih="<?= session('id_pemilih') ?>"  data-nama="<?= $kdd['nama_ketua']. " & ". $kdd['nama_wakil']?>" type="button" ><i class="fa fa-check"></i> Vote</button>
-
+                    <button class="btn btn-block btn-success tombol-vote" data-fakultas=<?= session('fakultas') ?> data-paslon=<?= $kdd['id'] ?> data-pemilih="<?= session('id_pemilih') ?>" data-nama="<?= $kdd['nama_ketua'] . " & " . $kdd['nama_wakil'] ?>" type="button"><i class="fa fa-check"></i> Vote</button>
                 </div>
             </div>
-        </div>
         <?php } ?>
     </div>
 
@@ -85,7 +69,7 @@
             <div class="modal-body">
                 <div class="author-box">
                     <div class="author-box-left">
-                        <img alt="image" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
+                        <img alt="image" id="foto" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
                         <div class="clearfix"></div>
                     </div>
                     <div class="author-box-details">
@@ -111,7 +95,9 @@
     $(document).ready(function() {
         $(document).on('click', '#paslon', function() {
             var nama = $(this).data('nama');
-            var fakultas = $(this).data('fakultas') + " / " + $(this).data('prodi') 
+            var foto = $(this).data('foto');
+            var fakultas = $(this).data('fakultas') + " / " + $(this).data('prodi')
+            $('#foto').attr('src', "<?= base_url('upload') . "/" ?>" + foto)
             $('#nama').text(nama);
             $('#fakultas').text(fakultas);
             $('#modal-item').modal('hide');

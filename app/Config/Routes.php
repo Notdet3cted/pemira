@@ -32,6 +32,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/vote/bem/(:any)/(:any)/(:any)', 'Vote::tampilbem/$1/$2/$3');
+$routes->get('/vote/dpm/(:any)/(:any)/(:any)', 'Vote::tampildpm/$1/$2/$3');
 
 /*
  * --------------------------------------------------------------------

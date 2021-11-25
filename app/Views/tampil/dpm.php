@@ -15,12 +15,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chocolat-parent">
-                            <div data-crop-image="250" style="overflow: hidden; position: relative; height: 285px;">
-                                <img alt="image" src="<?= base_url("assets/stisla/img/example-image.jpg") ?>" class="img-fluid">
+                            <div data-crop-image="250" style="overflow: hidden; position: relative; height: 300px;">
+                                <img alt="image" src="<?= base_url('upload').'/'.$kdd['foto_dpm'] ?>" class="img-fluid">
                             </div>
                         </div>
                         <h4 class="text-center">
-                            <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama'] ?>" data-nim="<?= $kdd['nim'] ?>" data-prodi="<?= $kdd['prodi'] ?>" data-fakultas="<?= $kdd['fakultas'] ?>">
+                            <a href="" id="paslon" data-toggle="modal" data-foto="<?=$kdd['foto_dpm'] ?>" data-target="#modalpaslon" data-nama="<?= $kdd['nama'] ?>" data-nim="<?= $kdd['nim'] ?>" data-prodi="<?= $kdd['prodi'] ?>" data-fakultas="<?= $kdd['fakultas'] ?>">
                                 <?= $kdd['nama'] ?>
                             </a>
                         </h4>
@@ -49,11 +49,11 @@
                             </p>
                         </div>
                         <div class="text-right">
-                            <a href="<?= site_url('admin/bem/input/') . $kdd['id'] ?>" class="btn btn-info btn-sm">
+                            <a href="<?= site_url('admin/dpm/input/') . $kdd['id'] ?>" class="btn btn-info btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
 
-                            <a class="btn btn-danger btn-sm tombol-hapus" data-nama="<?= $kdd['nama']?>" href="<?= site_url('admin/bem/delete/') . $kdd['id']; ?>">
+                            <a class="btn btn-danger btn-sm tombol-hapus" data-nama="<?= $kdd['nama'] ?>" href="<?= site_url('admin/dpm/delete/') . $kdd['id']; ?>">
                                 <i class="fas fa-trash">
                                 </i>
                             </a>
@@ -82,7 +82,7 @@
             <div class="modal-body">
                 <div class="author-box">
                     <div class="author-box-left">
-                        <img alt="image" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
+                        <img alt="image" id="foto" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
                         <div class="clearfix"></div>
                     </div>
                     <div class="author-box-details">
@@ -108,7 +108,9 @@
     $(document).ready(function() {
         $(document).on('click', '#paslon', function() {
             var nama = $(this).data('nama');
+            var foto = $(this).data('foto');
             var fakultas = $(this).data('fakultas') + " / " + $(this).data('prodi')
+            $('#foto').attr('src', "<?= base_url('upload')."/" ?>" + foto)
             $('#nama').text(nama);
             $('#fakultas').text(fakultas);
             $('#modal-item').modal('hide');

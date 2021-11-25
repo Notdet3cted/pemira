@@ -1,5 +1,4 @@
 <?= $this->extend('template') ?>
-
 <?= $this->section('content') ?>
 
 <section class="section">
@@ -8,10 +7,7 @@
     </div>
 </section>
 
-<!-- Main content -->
 <section class="content">
-
-
 
     <div class="row">
         <?php foreach ($row as $kdd) { ?>
@@ -19,16 +15,16 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chocolat-parent">
-                            <div data-crop-image="250" style="overflow: hidden; position: relative; height: 285px;">
-                                <img alt="image" src="<?= base_url("assets/stisla/img/example-image.jpg") ?>" class="img-fluid">
+                        <div data-crop-image="250" style="overflow: hidden; position: relative; height: 300px;">
+                                <img alt="image" src="<?= base_url('upload').'/'.$kdd['foto_paslon'] ?>" class="img-fluid">
                             </div>
                         </div>
                         <h4 class="text-center">
-                            <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama_ketua'] ?>" data-nim="<?= $kdd['nim_ketua'] ?>" data-prodi="<?= $kdd['prodi_ketua'] ?>" data-fakultas="<?= $kdd['fakultas_ketua'] ?>">
+                            <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama_ketua'] ?>" data-nim="<?= $kdd['nim_ketua'] ?>" data-prodi="<?= $kdd['prodi_ketua'] ?>" data-foto="<?= $kdd['foto_ketua'] ?>" data-fakultas="<?= $kdd['fakultas_ketua'] ?>">
                                 <?= $kdd['nama_ketua'] ?>
                             </a>
                             dan
-                            <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama_wakil'] ?>" data-nim="<?= $kdd['nim_wakil'] ?>" data-prodi="<?= $kdd['prodi_wakil'] ?>" data-fakultas="<?= $kdd['fakultas_wakil'] ?>">
+                            <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama_wakil'] ?>" data-foto="<?= $kdd['foto_wakil'] ?>" data-nim="<?= $kdd['nim_wakil'] ?>" data-prodi="<?= $kdd['prodi_wakil'] ?>" data-fakultas="<?= $kdd['fakultas_wakil'] ?>">
                                 <?= $kdd['nama_wakil'] ?>
                             </a>
                         </h4>
@@ -59,7 +55,7 @@
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
 
-                            <a class="btn btn-danger btn-sm tombol-hapus" data-nama="<?= $kdd['nama_ketua'] . ' & '. $kdd['nama_wakil']?>" href="<?= site_url('admin/bem/delete/') . $kdd['id']; ?>">
+                            <a href="<?= site_url('admin/bem/delete/') . $kdd['id'] ?>" class="btn btn-danger btn-sm tombol-hapus" data-nama="<?= $kdd['nama_ketua'] . ' & ' . $kdd['nama_wakil'] ?>">
                                 <i class="fas fa-trash">
                                 </i>
                             </a>
@@ -85,7 +81,7 @@
             <div class="modal-body">
                 <div class="author-box">
                     <div class="author-box-left">
-                        <img alt="image" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
+                        <img alt="image" id="foto" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
                         <div class="clearfix"></div>
                     </div>
                     <div class="author-box-details">
@@ -111,7 +107,9 @@
     $(document).ready(function() {
         $(document).on('click', '#paslon', function() {
             var nama = $(this).data('nama');
-            var fakultas = $(this).data('fakultas') + " / " + $(this).data('prodi') 
+            var foto = $(this).data('foto');
+            var fakultas = $(this).data('fakultas') + " / " + $(this).data('prodi')
+            $('#foto').attr('src', "<?= base_url('upload')."/" ?>" + foto)
             $('#nama').text(nama);
             $('#fakultas').text(fakultas);
             $('#modal-item').modal('hide');

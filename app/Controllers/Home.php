@@ -20,23 +20,23 @@ class Home extends BaseController
     {
 
         $id = session('id_pemilih');
-        
-        if($id == null){
+
+        if ($id == null) {
             return redirect()->to('auth');
-        }  
-        
+        }
+
         $pemilih = $this->modelpemilih->where(['id' => $id])->first();
 
         if (!$pemilih) {
             return redirect()->to('auth');
         }
 
-        if($pemilih['dpmf'] != 0){
+        if ($pemilih['dpmf'] != 0) {
             return redirect()->to('home/bemu/');
         }
 
         switch (session('fakultas')) {
-            case 'Teknik':
+            case 'FT':
                 $fak = 'DPMFT';
                 break;
             case 'FEB':
@@ -48,18 +48,18 @@ class Home extends BaseController
             case 'FH':
                 $fak = 'DPMFH';
                 break;
-            case 'FAPERTA':
+            case 'FPT':
                 $fak = 'DPMFPT';
                 break;
-            case 'PSIKOLOG':
-                $fak = 'DPMPSI';
+            case 'FPSI':
+                $fak = 'DPMFPSI';
                 break;
         }
 
 
         $data = [
             'kandidat'  => $this->modelkandidatdpm->where(['ormawa' => $fak])->findAll(),
-            'ormawa'    => 'DPMF',
+            'ormawa'    => $fak,
             'sesi'      => 'dpmf',
             'title'     => "Calon Ketua $fak"
         ];
@@ -71,18 +71,18 @@ class Home extends BaseController
     {
 
         $id = session('id_pemilih');
-        
-        if($id == null){
+
+        if ($id == null) {
             return redirect()->to('auth');
-        }  
-        
+        }
+
         $pemilih = $this->modelpemilih->where(['id' => $id])->first();
 
         if (!$pemilih) {
             return redirect()->to('auth');
         }
 
-        if($pemilih['dpmu'] != 0){
+        if ($pemilih['dpmu'] != 0) {
             return redirect()->to('home/dpmf/');
         }
 
@@ -99,18 +99,18 @@ class Home extends BaseController
     {
 
         $id = session('id_pemilih');
-        
-        if($id == null){
+
+        if ($id == null) {
             return redirect()->to('auth');
-        }  
-        
+        }
+
         $pemilih = $this->modelpemilih->where(['id' => $id])->first();
 
         if (!$pemilih) {
             return redirect()->to('auth');
         }
 
-        if($pemilih['bemu'] != 0){
+        if ($pemilih['bemu'] != 0) {
             return redirect()->to('home/bemf/');
         }
 
@@ -118,7 +118,7 @@ class Home extends BaseController
             'kandidat' => $this->modelkandidatbem->where(['ormawa' => 'BEMU'])->findAll(),
             'ormawa'    => 'BEMU',
             'sesi'      => 'bemu',
-            'title'     => "Calon Ketua dan Wakil Ketua Universitas"
+            'title'     => "Calon Ketua dan Wakil Ketua BEM UMK"
         ];
 
         echo view("bem", $data);
@@ -127,23 +127,23 @@ class Home extends BaseController
     {
 
         $id = session('id_pemilih');
-        
-        if($id == null){
+
+        if ($id == null) {
             return redirect()->to('auth');
-        }  
-        
+        }
+
         $pemilih = $this->modelpemilih->where(['id' => $id])->first();
 
         if (!$pemilih) {
             return redirect()->to('auth');
         }
 
-        if($pemilih['bemf'] != 0){
+        if ($pemilih['bemf'] != 0) {
             return redirect()->to('auth/logout');
         }
 
         switch (session('fakultas')) {
-            case 'Teknik':
+            case 'FT':
                 $fak = 'BEMFT';
                 break;
             case 'FEB':
@@ -155,17 +155,17 @@ class Home extends BaseController
             case 'FH':
                 $fak = 'BEMFH';
                 break;
-            case 'FAPERTA':
+            case 'FPT':
                 $fak = 'BEMFPT';
                 break;
-            case 'PSIKOLOG':
-                $fak = 'BEMPSI';
+            case 'FPSI':
+                $fak = 'BEMFPSI';
                 break;
         }
-        
+
         $data = [
             'kandidat' => $this->modelkandidatbem->where(['ormawa' => $fak])->findAll(),
-            'ormawa'    => 'BEMF',
+            'ormawa'    => $fak,
             'sesi'      => 'bemf',
             'title'     => "Calon Ketua dan Wakil Ketua $fak"
         ];

@@ -9,7 +9,6 @@ class Modelpemilih extends Model
 
     protected $table = 'pemilih';
     protected $allowedFields = [
-        'nim', 'nama', 'fakultas', 'password', 'dpmu', 'dpmf', 'bemu', 'bemf', 'status'
+        'nim', 'nama', 'fakultas', 'prodi', 'password', 'dpmu', 'dpmf', 'bemu', 'bemf', 'status'
     ];
-
 }

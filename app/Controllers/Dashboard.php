@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\Modelkandidatbem;
@@ -10,36 +11,46 @@ class Dashboard extends BaseController
 
     public function __construct()
     {
-        $this->modeldpm = new Modelkandidatdpm;
-        $this->modelbem = new Modelkandidatbem;
+        $this->modeldpm  = new Modelkandidatdpm;
+        $this->modelbem  = new Modelkandidatbem;
+        $this->modelvote = new Modelvote;
     }
 
 
     public function index()
     {
+        $kd = session('kode_akses');
 
-        $fakultas = ['Teknik', 'Ekonomi dan Bisnis', 'Pertaninan', 'Psikolog' ,'Keguruan dan Ilmu Pendidikan', 'Hukum'];
-        $fak = ['FT', 'FEB','FH','FPSI','FKIP','FPT'];
+        if ($kd == null) {
+            return redirect()->to('admin/auth');
+        }
+
+        $fak = [
+            ['kode' => 'FT', 'label' => 'Teknik'],
+            ['kode' => 'FEB', 'label' => 'Ekonomi dan Bisnis'],
+            ['kode' => 'FKIP', 'label' => 'Keguruan dan Ilmu Pendidikan'],
+            ['kode' => 'FPSI', 'label' => 'Psikologi'],
+            ['kode' => 'FPT', 'label' => 'Pertanian'],
+            ['kode' => 'FH', 'label' => 'Hukum'],
+        ];
         $ormawa = ['DPM UNIVERSITAS', 'DPM FAKULTAS', 'BEM UNIVERSITAS', 'BEM FAKULTAS'];
 
-        $bayar = ["Sudah Bayar", "Belum"];
-        $stb[null] = '-- Status Bayar --';
-        foreach ($bayar as $byr) {
-            $stb[$byr] = $byr;
+        foreach ($fak as $dpmfak) {
+            $dpmfakultas['DPM' . $dpmfak['kode']] = $this->modeldpm->where(['ormawa' => 'DPM' . $dpmfak['kode']])->findAll();
+            $bemfakultas['BEM' . $dpmfak['kode']] = $this->modelbem->where(['ormawa' => 'BEM' . $dpmfak['kode']])->findAll();
         }
 
-        foreach ($fak as $dpmfak){
-            $dpmfakultas['DPM'.$dpmfak] = $this->modeldpm->where(['ormawa'=>'DPM'.$dpmfak])->findAll();
-        }
-
-        // dd($dpmfakultas);
-
+        $bemuniversitas = $this->modelbem->where(['ormawa' => 'BEMU'])->findAll();
         $dpmuniversitas = $this->modeldpm->where(['ormawa' => 'DPMU'])->findAll();
+        // dd($bemuniversitas);
         $data = [
-            'fak' => $fakultas,
+            'fak' => $fak,
             'orm' => $ormawa,
             'dpmu' => $dpmuniversitas,
             'dpmf' => $dpmfakultas,
+            'bemu' => $bemuniversitas,
+            'bemf' => $bemfakultas,
+            'suara' => $this->modelvote
         ];
 
         echo view('dashboard', $data);

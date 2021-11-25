@@ -9,6 +9,7 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" inte grity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url('/assets/fa/css/all.css') ?>">
+    <link rel="icon" type="image/x-icon" href="<?= base_url("upload/kpum.png") ?>">
 
     <!-- CSS Libraries -->
     <!-- SweetAlert2 -->
@@ -29,7 +30,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url('/assets/stisla/css/style.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/assets/stisla/css/components.css') ?>">
-    
+
 
 </head>
 
@@ -46,10 +47,10 @@
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="<?= base_url('/assets/stisla/img/avatar/avatar-1.png') ?>" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block"><?= 'nama'; ?></div>
+                            <div class="d-sm-none d-lg-inline-block"><?= session('kode_akses') ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="<?= site_url('auth/logout') ?>" class="dropdown-item has-icon text-danger">
+                            <a href="<?= site_url('admin/auth/logout') ?>" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -59,34 +60,34 @@
             <div class="main-sidebar">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="index.html">Stisla</a>
+                        <span>E-VOTE PEMIRA UMK</span>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="index.html">St</a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
-                        <li class=""><a class="nav-link" href="<?= site_url('dashboard') ?>"><i class="nav-icon fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                        <li class=""><a class="nav-link" href="<?= site_url('dashboard') ?>"><i class="nav-icon fas fa-tachometer-alt"></i><span>Quick Count</span></a></li>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="nav-icon fas fa-tags"></i><span>Tampil Data</span></a>
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-chalkboard"></i><span>Tampil Data</span></a>
                             <ul class="dropdown-menu">
-                                <li class=""><a class="nav-link" href="<?= site_url('admin/dpm/tampil') ?>"><i class="fas fa-percent"></i>DPM</a></li>
-                                <li class=""><a class="nav-link" href="<?= site_url('admin/bem/tampil') ?>"><i class="fab fa-bitcoin"></i>BEM</a></li>
-                                <li class=""><a class="nav-link" href="<?= site_url('admin/pemilih/tampil') ?>"><i class="fab fa-bitcoin"></i>Pemilih</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/dpm/tampil') ?>"><i class="fas fa-landmark"></i>DPM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/bem/tampil') ?>"><i class="fas fa-hotel"></i>BEM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/pemilih/tampil') ?>"><i class="fas fa-snowman"></i>Pemilih</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="nav-icon fas fa-tags"></i><span>Input Data</span></a>
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-pen-alt"></i><span>Input Data</span></a>
                             <ul class="dropdown-menu">
-                                <li class=""><a class="nav-link" href="<?= site_url('admin/dpm/input') ?>"><i class="fas fa-percent"></i>DPM</a></li>
-                                <li class=""><a class="nav-link" href="<?= site_url('admin/bem/input') ?>"><i class="fab fa-bitcoin"></i>BEM</a></li>
-                                <li class=""><a class="nav-link" href="<?= site_url('admin/pemilih/input') ?>"><i class="fab fa-bitcoin"></i>Pemilih</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/dpm/input') ?>"><i class="fas fa-landmark"></i>DPM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/bem/input') ?>"><i class="fas fa-hotel"></i>BEM</a></li>
+                                <li class=""><a class="nav-link" href="<?= site_url('admin/pemilih/input') ?>"><i class="fas fa-snowman"></i>Pemilih</a></li>
                             </ul>
                         </li>
 
                     </ul>
-                    
+
                     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
                         <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
                             <i class="fas fa-rocket"></i> Logout

@@ -49,11 +49,11 @@
                                         <td class="project-actions text-right">
                                             <a href="<?= site_url('admin/pemilih/input/') . $pemilih['id'] ?>" class="btn btn-info btn-sm">
                                                 <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                                <a class="btn btn-danger btn-sm tombol-hapus" data-nama=<?= $pemilih['nama'] ?> href="<?= site_url('admin/pemilih/delete/') . $pemilih['id']; ?>">
-                                                    <i class="fas fa-trash">
-                                                    </i>
-                                                </a>
+                                            </a>
+                                            <a class="btn btn-danger btn-sm tombol-hapus" data-nama=<?= $pemilih['nama'] ?> href="<?= site_url('admin/pemilih/delete/') . $pemilih['id']; ?>">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php } ?>

@@ -9,40 +9,40 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chocolat-parent">
-                            <div data-crop-image="250" style="overflow: hidden; position: relative; height: 285px;">
-                                <img alt="image" src="<?= base_url("assets/stisla/img/example-image.jpg") ?>" class="img-fluid">
+                            <div data-crop-image="250" style="overflow: hidden; position: relative; height: 300px;">
+                                <img alt="image" src="<?= base_url('upload') . '/' . $kdd['foto_dpm'] ?>" class="img-fluid">
                             </div>
                         </div>
                         <h4 class="text-center">
-                            <a href="" id="paslon" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama'] ?>" data-nim="<?= $kdd['nim'] ?>" data-prodi="<?= $kdd['prodi'] ?>" data-fakultas="<?= $kdd['fakultas'] ?>">
+                            <a href="" id="paslon" data-foto="<?= $kdd['foto_dpm'] ?>" data-toggle="modal" data-target="#modalpaslon" data-nama="<?= $kdd['nama'] ?>" data-nim="<?= $kdd['nim'] ?>" data-prodi="<?= $kdd['prodi'] ?>" data-fakultas="<?= $kdd['fakultas'] ?>">
                                 <?= $kdd['nama'] ?>
                             </a>
                         </h4>
 
                         <div class="mt-4 text-center">
                             <p>
-                                <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseVisi" aria-expanded="false" aria-controls="collapseVisi">
+                                <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseVisi-<?= $kdd['id'] ?>" aria-expanded="false" aria-controls="collapseVisi">
                                     Visi
                                 </button>
-                                <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseMisi" aria-expanded="false" aria-controls="collapseMisi">
+                                <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseMisi-<?= $kdd['id'] ?>" aria-expanded="false" aria-controls="collapseMisi">
                                     Misi
                                 </button>
                             </p>
 
                         </div>
-                        <div class="collapse" id="collapseVisi">
+                        <div class="collapse" id="collapseVisi-<?= $kdd['id'] ?>">
                             <p>
                                 <strong>Visi</strong>
                                 <?= $kdd['visi'] ?>
                             </p>
                         </div>
-                        <div class="collapse" id="collapseMisi">
+                        <div class="collapse" id="collapseMisi-<?= $kdd['id'] ?>">
                             <p>
                                 <strong>Misi</strong>
                                 <?= $kdd['misi'] ?>
                             </p>
                         </div>
-                        <button class="btn btn-block btn-success tombol-vote" data-paslon=<?= $kdd['id'] ?> data-pemilih="<?= session('id_pemilih') ?>" data-nama="<?= $kdd['nama'] ?>" type="button"><i class="fa fa-check"></i> Vote</button>
+                        <button class="btn btn-block btn-success tombol-vote" data-fakultas=<?= session('fakultas') ?> data-paslon=<?= $kdd['id'] ?> data-pemilih="<?= session('id_pemilih') ?>" data-nama="<?= $kdd['nama'] ?>" type="button"><i class="fa fa-check"></i> Vote</button>
 
                     </div>
                 </div>
@@ -67,7 +67,7 @@
             <div class="modal-body">
                 <div class="author-box">
                     <div class="author-box-left">
-                        <img alt="image" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
+                        <img alt="image" id="foto" src="<?= base_url("assets/stisla/img/avatar/avatar-1.png") ?>" class="author-box-picture">
                         <div class="clearfix"></div>
                     </div>
                     <div class="author-box-details">
@@ -93,8 +93,10 @@
     $(document).ready(function() {
         $(document).on('click', '#paslon', function() {
             var nama = $(this).data('nama');
+            var foto = $(this).data('foto');
             var fakultas = $(this).data('fakultas') + " / " + $(this).data('prodi')
             $('#nama').text(nama);
+            $('#foto').attr('src', "<?= base_url('upload') . "/" ?>" + foto)
             $('#fakultas').text(fakultas);
             $('#modal-item').modal('hide');
         })
